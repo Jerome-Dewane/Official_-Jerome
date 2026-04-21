@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jerome Dewane - Data Annotation Specialist & Industrial Chemist | Expert in CVAT, SuperbAI, Fast Label & Lensor">
+    <title>Jerome Dewane | Data Annotation Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #3b82f6;
+            --purple: #a855f7;
+            --emerald: #10b981;
+            --pink: #ec4899;
+            --amber: #f59e0b;
+        }
+        * { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; }
+        h1, h2, h3, h4, .font-display { font-family: 'Syne', sans-serif; }
+
+        /* ── HERO ── */
+        .hero-bg {
+            background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 50%, #1a1040 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+            top: -100px; right: -100px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%);
+            bottom: -50px; left: 100px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* ── NAV ── */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            background: linear-gradient(to right, var(--blue), var(--purple));
+            bottom: -4px; left: 0;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover { color: #3b82f6; }
+        .nav-link:hover::after { width: 100%; }
+
+        /* ── SECTION HEADER ── */
+        .section-header {
+            position: relative;
+            display: inline-block;
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            width: 60px; height: 3px;
+            background: linear-gradient(to right, var(--blue), var(--purple));
+            bottom: -10px; left: 0;
+            border-radius: 2px;
+        }
+
+        /* ── CARDS ── */
+        .skill-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -12px rgba(59,130,246,0.2);
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px -12px rgba(59,130,246,0.15);
+        }
+
+        /* ── PROFILE AVATAR ── */
+        .profile-ring {
+            background: linear-gradient(135deg, #3b82f6, #a855f7, #6366f1);
+            padding: 4px;
+            border-radius: 24px;
+            animation: ringPulse 3s ease-in-out infinite;
+        }
+        @keyframes ringPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(168,85,247,0.3); }
+            50% { box-shadow: 0 0 0 20px rgba(168,85,247,0); }
+        }
+        .profile-inner {
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+        }
+
+        /* ── ANNOTATION SVG IMAGES ── */
+        .anno-img {
+            width: 100%; height: 256px;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .project-card:hover .anno-img {
+            transform: scale(1.04);
+        }
+
+        /* ── SCROLL FADE IN ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── PING DOT ── */
+        @keyframes ping { 75%,100%{transform:scale(2);opacity:0} }
+        .animate-ping { animation: ping 1s cubic-bezier(0,0,0.2,1) infinite; }
+
+        /* ── MOBILE MENU ── */
+        #mobile-menu { display: none; }
+        #mobile-menu.open { display: flex; }
+
+        /* ── STAT BAR ── */
+        .stat-bar { transition: width 1.2s ease; }
+
+        /* ── BADGE GLOW ── */
+        .badge-glow {
+            box-shadow: 0 0 15px rgba(16,185,129,0.3);
+        }
+
+        /* ── GRADIENT TEXT ── */
+        .grad-text {
+            background: linear-gradient(90deg, #3b82f6, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Upload note */
+        .upload-note {
+            background: rgba(245,158,11,0.08);
+            border: 1px dashed rgba(245,158,11,0.4);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 11px;
+            color: #f59e0b;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white">
+
+    <!-- ═══════════════════════════════════ NAVBAR ══════════════════════════════════ -->
+    <nav class="bg-zinc-900/95 backdrop-blur-sm border-b border-zinc-800/60 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center text-sm font-bold shadow-lg font-display">JD</div>
+                <h1 class="text-xl font-semibold tracking-tight font-display">Jerome Dewane</h1>
+            </div>
+            <!-- Desktop nav -->
+            <div class="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-300">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <a href="#contact" class="hidden md:flex px-5 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 rounded-2xl font-semibold text-sm items-center gap-2 transition-all shadow-lg">
+                <i class="fas fa-paper-plane text-xs"></i> Let's connect
+            </a>
+            <!-- Hamburger -->
+            <button id="hamburger" class="md:hidden p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden flex-col px-6 pb-4 gap-3 text-sm font-medium border-t border-zinc-800">
+            <a href="#about" class="block py-2 text-zinc-300 hover:text-blue-400 transition-colors" onclick="closeMobile()">About</a>
+            <a href="#skills" class="block py-2 text-zinc-300 hover:text-blue-400 transition-colors" onclick="closeMobile()">Skills</a>
+            <a href="#experience" class="block py-2 text-zinc-300 hover:text-blue-400 transition-colors" onclick="closeMobile()">Experience</a>
+            <a href="#projects" class="block py-2 text-zinc-300 hover:text-blue-400 transition-colors" onclick="closeMobile()">Projects</a>
+            <a href="#education" class="block py-2 text-zinc-300 hover:text-blue-400 transition-colors" onclick="closeMobile()">Education</a>
+            <a href="#contact" class="block py-2 text-zinc-300 hover:text-blue-400 transition-colors" onclick="closeMobile()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+    <section class="hero-bg py-24 md:py-32">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">
+            <!-- Text -->
+            <div class="space-y-7">
+                <div class="inline-flex items-center gap-2.5 bg-white/8 backdrop-blur-md px-4 py-2 rounded-3xl text-sm text-zinc-300 border border-white/10">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+                    </span>
+                    Open to annotation &amp; AI projects
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl xl:text-7xl font-extrabold leading-[1.05] tracking-tight font-display">
+                    Jerome<br><span class="grad-text">Dewane</span>
+                </h1>
+                
+                <p class="text-2xl text-blue-400 font-semibold">Data Annotation Specialist<br class="hidden md:block"> &amp; Industrial Chemist</p>
+                
+                <p class="text-lg text-zinc-400 max-w-lg leading-relaxed">
+                    Expert in high-accuracy data labelling with <strong class="text-zinc-200">CVAT</strong>, <strong class="text-zinc-200">SuperbAI</strong>, <strong class="text-zinc-200">Fast Label</strong> &amp; <strong class="text-zinc-200">Lensor</strong>. Turning raw images into AI-ready datasets.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#contact" class="px-8 py-4 bg-white text-zinc-900 rounded-3xl font-semibold flex items-center gap-2.5 hover:scale-105 transition-transform shadow-xl">
+                        <i class="fas fa-envelope text-sm"></i> Get in touch
+                    </a>
+                    <a href="https://x.com/timebombjnr" target="_blank" rel="noopener" class="px-8 py-4 border border-white/25 hover:border-white/60 hover:bg-white/5 rounded-3xl font-medium flex items-center gap-2.5 transition-all">
+                        <i class="fab fa-x-twitter text-sm"></i> Follow on X
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-8 text-sm pt-2 text-zinc-400">
+                    <div>
+                        <span class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Based in</span>
+                        <span class="font-medium text-white">Kenya 🇰🇪</span>
+                    </div>
+                    <div class="h-8 w-px bg-zinc-700"></div>
+                    <div>
+                        <span class="block text-xs uppercase tracking-widest text-zinc-500 mb-1">Focus areas</span>
+                        <span class="font-medium text-white">Computer Vision · Prompt Engineering</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Avatar -->
+            <div class="flex justify-center md:justify-end">
+                <div class="relative">
+                    <div class="profile-ring w-72 h-72 md:w-80 md:h-80">
+                        <div class="profile-inner w-full h-full flex items-center justify-center">
+                            <!-- 
+                              ╔══════════════════════════════════════════╗
+                              ║  REPLACE THIS SVG WITH YOUR ACTUAL PHOTO ║
+                              ║  Change this entire <svg> block to:      ║
+                              ║  <img src="profile.jpg"                  ║
+                              ║       alt="Jerome Dewane"        ║
+                              ║       class="w-full h-full object-cover">║
+                              ╚══════════════════════════════════════════╝
+                            -->
+                            <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                                <defs>
+                                    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#0f172a"/>
+                                        <stop offset="100%" style="stop-color:#1e1b4b"/>
+                                    </linearGradient>
+                                    <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#3b82f6"/>
+                                        <stop offset="100%" style="stop-color:#a855f7"/>
+                                    </linearGradient>
+                                    <radialGradient id="glowGrad" cx="50%" cy="35%" r="50%">
+                                        <stop offset="0%" style="stop-color:rgba(168,85,247,0.2)"/>
+                                        <stop offset="100%" style="stop-color:transparent"/>
+                                    </radialGradient>
+                                </defs>
+                                <!-- Background -->
+                                <rect width="320" height="320" fill="url(#bgGrad)"/>
+                                <rect width="320" height="320" fill="url(#glowGrad)"/>
+                                <!-- Subtle grid lines -->
+                                <line x1="0" y1="80" x2="320" y2="80" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                                <line x1="0" y1="160" x2="320" y2="160" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                                <line x1="0" y1="240" x2="320" y2="240" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                                <line x1="80" y1="0" x2="80" y2="320" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                                <line x1="160" y1="0" x2="160" y2="320" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                                <line x1="240" y1="0" x2="240" y2="320" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                                <!-- Body silhouette -->
+                                <ellipse cx="160" cy="270" rx="90" ry="55" fill="url(#avatarGrad)" opacity="0.25"/>
+                                <rect x="110" y="175" width="100" height="120" rx="12" fill="url(#avatarGrad)" opacity="0.3"/>
+                                <!-- Head -->
+                                <circle cx="160" cy="135" r="55" fill="url(#avatarGrad)" opacity="0.35"/>
+                                <circle cx="160" cy="135" r="50" fill="#1e1b4b"/>
+                                <!-- Face features -->
+                                <circle cx="144" cy="128" r="5" fill="rgba(255,255,255,0.7)"/>
+                                <circle cx="176" cy="128" r="5" fill="rgba(255,255,255,0.7)"/>
+                                <path d="M 148 150 Q 160 162 172 150" stroke="rgba(255,255,255,0.6)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                                <!-- Initials badge -->
+                                <circle cx="160" cy="135" r="28" fill="url(#avatarGrad)" opacity="0.9"/>
+                                <text x="160" y="143" text-anchor="middle" font-family="Syne, sans-serif" font-size="20" font-weight="800" fill="white">JD</text>
+                                <!-- Decorative dots -->
+                                <circle cx="48" cy="48" r="4" fill="rgba(59,130,246,0.4)"/>
+                                <circle cx="272" cy="48" r="4" fill="rgba(168,85,247,0.4)"/>
+                                <circle cx="48" cy="272" r="4" fill="rgba(168,85,247,0.4)"/>
+                                <circle cx="272" cy="272" r="4" fill="rgba(59,130,246,0.4)"/>
+                                <!-- Corner accent lines -->
+                                <path d="M 30 30 L 30 60 M 30 30 L 60 30" stroke="rgba(59,130,246,0.5)" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                <path d="M 290 30 L 290 60 M 290 30 L 260 30" stroke="rgba(168,85,247,0.5)" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                <path d="M 30 290 L 30 260 M 30 290 L 60 290" stroke="rgba(168,85,247,0.5)" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                <path d="M 290 290 L 290 260 M 290 290 L 260 290" stroke="rgba(59,130,246,0.5)" stroke-width="2" stroke-linecap="round" fill="none"/>
+                                <!-- Upload note text -->
+                                <text x="160" y="300" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" fill="rgba(245,158,11,0.7)">⚠ Replace with your photo</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- Accuracy badge -->
+                    <div class="absolute -bottom-4 -right-4 bg-zinc-900 border border-zinc-700 text-emerald-400 text-sm font-semibold px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-2 badge-glow">
+                        <i class="fas fa-check-circle"></i> 90%+ Accuracy
+                    </div>
+                    <!-- Experience badge -->
+                    <div class="absolute -top-4 -left-4 bg-zinc-900 border border-zinc-700 text-blue-400 text-xs font-medium px-4 py-2 rounded-2xl shadow-xl flex items-center gap-2">
+                        <i class="fas fa-star text-xs"></i> 2+ yrs annotation
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════ ABOUT ══════════════════════════════════ -->
+    <section id="about" class="max-w-6xl mx-auto px-6 py-20 fade-in">
+        <div class="grid md:grid-cols-12 gap-12 items-start">
+            <div class="md:col-span-4">
+                <h2 class="section-header text-4xl font-extrabold mb-6 font-display">About<br>Me</h2>
+                <p class="text-zinc-400 mt-8 text-sm leading-relaxed">Core skills, strengths &amp; what drives my work in AI data annotation.</p>
+                <!-- Quick stats -->
+                <div class="mt-8 space-y-4">
+                    <div>
+                        <div class="flex justify-between text-xs text-zinc-400 mb-1.5"><span>Accuracy Rate</span><span class="text-emerald-400">90–92%</span></div>
+                        <div class="h-1.5 bg-zinc-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full stat-bar" style="width:91%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs text-zinc-400 mb-1.5"><span>Tools Mastered</span><span class="text-blue-400">4 platforms</span></div>
+                        <div class="h-1.5 bg-zinc-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full stat-bar" style="width:80%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs text-zinc-400 mb-1.5"><span>Productivity</span><span class="text-purple-400">7.5+ hrs/day</span></div>
+                        <div class="h-1.5 bg-zinc-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full stat-bar" style="width:95%"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-8 space-y-5 text-zinc-300 text-lg leading-relaxed">
+                <p>I have developed strong skills in <span class="text-white font-medium">prompt engineering and AI interaction</span>, where I'm able to craft detailed prompts and refine them through follow-ups to get more accurate and useful results. I understand how to engage effectively with AI tools and make the most out of them.</p>
+                <p>I also consider myself a <span class="text-white font-medium">creative thinker</span>. I enjoy exploring ideas in an open-ended way, whether it's coming up with new concepts, solving problems, or approaching situations from different perspectives.</p>
+                <p>I actively reflect on my own progress and abilities. I often take time to evaluate what I've learned, identify patterns in my thinking, and look for ways to improve. This habit has helped me build a <span class="text-white font-medium">growth-oriented mindset</span>.</p>
+                <p>I'm naturally curious about technology and how things work. I take an interest in exploring different tools, especially in AI, and I like understanding their capabilities and underlying processes.</p>
+                <p>I communicate in a <span class="text-white font-medium">clear and direct way</span>, and I tend to build on ideas step by step. I ask questions, refine them when needed, and make sure I fully understand the responses I receive.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════ SKILLS ══════════════════════════════════ -->
+    <section id="skills" class="bg-zinc-900 py-20">
+        <div class="max-w-6xl mx-auto px-6 fade-in">
+            <h2 class="section-header text-4xl font-extrabold mb-14 font-display">Core Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                <div class="skill-card bg-zinc-800/80 border border-zinc-700/60 rounded-2xl p-6 flex flex-col gap-3">
+                    <i class="fas fa-magic text-2xl text-blue-400"></i>
+                    <h4 class="font-semibold font-display">Prompt Engineering</h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Crafting &amp; refining AI prompts for precise results</p>
+                </div>
+                <div class="skill-card bg-zinc-800/80 border border-zinc-700/60 rounded-2xl p-6 flex flex-col gap-3">
+                    <i class="fas fa-robot text-2xl text-purple-400"></i>
+                    <h4 class="font-semibold font-display">AI Annotation Tools</h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">CVAT · SuperbAI · Fast Label · Lensor</p>
+                </div>
+                <div class="skill-card bg-zinc-800/80 border border-zinc-700/60 rounded-2xl p-6 flex flex-col gap-3">
+                    <i class="fas fa-draw-polygon text-2xl text-emerald-400"></i>
+                    <h4 class="font-semibold font-display">Data Annotation</h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Polygon · Bounding Box · Segmentation</p>
+                </div>
+                <div class="skill-card bg-zinc-800/80 border border-zinc-700/60 rounded-2xl p-6 flex flex-col gap-3">
+                    <i class="fas fa-image text-2xl text-pink-400"></i>
+                    <h4 class="font-semibold font-display">AI Image Generation</h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Professional editing &amp; visual branding</p>
+                </div>
+                <div class="skill-card bg-zinc-800/80 border border-zinc-700/60 rounded-2xl p-6 flex flex-col gap-3">
+                    <i class="fas fa-flask text-2xl text-amber-400"></i>
+                    <h4 class="font-semibold font-display">Industrial Chemistry</h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Pesticides · Waste management</p>
+                </div>
+                <div class="skill-card bg-zinc-800/80 border border-zinc-700/60 rounded-2xl p-6 flex flex-col gap-3">
+                    <i class="fas fa-lightbulb text-2xl text-blue-400"></i>
+                    <h4 class="font-semibold font-display">Creative Thinking</h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Open-ended problem solving</p>
+                </div>
+                <div class="skill-card bg-zinc-800/80 border border-zinc-700/60 rounded-2xl p-6 flex flex-col gap-3">
+                    <i class="fas fa-brain text-2xl text-purple-400"></i>
+                    <h4 class="font-semibold font-display">Self-Reflection</h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Growth-oriented mindset &amp; continuous learning</p>
+                </div>
+                <div class="skill-card bg-zinc-800/80 border border-zinc-700/60 rounded-2xl p-6 flex flex-col gap-3">
+                    <i class="fas fa-comments text-2xl text-emerald-400"></i>
+                    <h4 class="font-semibold font-display">Clear Communication</h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">Step-by-step clarity &amp; active listening</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════ EXPERIENCE ═════════════════════════════ -->
+    <section id="experience" class="max-w-6xl mx-auto px-6 py-20 fade-in">
+        <h2 class="section-header text-4xl font-extrabold mb-14 font-display">Professional Projects &amp; Experience</h2>
+        <div class="space-y-8">
+            <!-- CVAT -->
+            <div class="project-card bg-zinc-900 border border-zinc-700/60 rounded-2xl p-8">
+                <div class="flex flex-wrap justify-between items-start gap-4 mb-5">
+                    <div>
+                        <h3 class="font-bold text-xl font-display">CVAT – Computer Vision Annotation Tool</h3>
+                        <p class="text-blue-400 text-sm mt-1">Data Labelling &amp; 3D Vehicle Annotation · 2025–2026</p>
+                    </div>
+                    <span class="px-4 py-1.5 bg-emerald-400/10 text-emerald-400 text-xs font-semibold rounded-2xl">90% accuracy · Polygon tool</span>
+                </div>
+                <p class="text-zinc-300 leading-relaxed">Labelled complex datasets including cars, trucks, vegetation, poles, buildings, pedestrians and lanelines. Handled 15–80 objects per image. Also completed the Swarco production project with 3D vehicle annotation achieving <strong class="text-white">88.22% accuracy</strong>.</p>
+                <p class="text-xs text-zinc-500 mt-5 flex items-center gap-2"><i class="fas fa-clock"></i> Time tracked via Time Doctor · 7.5+ hrs/day</p>
+            </div>
+            <!-- SuperbAI -->
+            <div class="project-card bg-zinc-900 border border-zinc-700/60 rounded-2xl p-8">
+                <div class="flex flex-wrap justify-between items-start gap-4 mb-5">
+                    <div>
+                        <h3 class="font-bold text-xl font-display">SuperbAI – Next Vision Project</h3>
+                        <p class="text-purple-400 text-sm mt-1">Damage Detection &amp; Gate/Door Labelling · 2025–2026</p>
+                    </div>
+                    <span class="px-4 py-1.5 bg-purple-400/10 text-purple-400 text-xs font-semibold rounded-2xl">92% accuracy · 738 images in 3 days</span>
+                </div>
+                <p class="text-zinc-300 leading-relaxed">Top Rot &amp; Wood Splintering detection on utility poles + switches. Gate &amp; Door project (open/closed) using bounding boxes on images &amp; videos. Short-term, <strong class="text-white">high-volume delivery</strong>.</p>
+            </div>
+            <!-- Fast Label -->
+            <div class="project-card bg-zinc-900 border border-zinc-700/60 rounded-2xl p-8">
+                <div class="flex flex-wrap justify-between items-start gap-4 mb-5">
+                    <div>
+                        <h3 class="font-bold text-xl font-display">Fast Label Tool</h3>
+                        <p class="text-pink-400 text-sm mt-1">Segmentation Annotation · 2025–2026</p>
+                    </div>
+                    <span class="px-4 py-1.5 bg-pink-400/10 text-pink-400 text-xs font-semibold rounded-2xl">85% accuracy · 40 tasks in 1 week</span>
+                </div>
+                <p class="text-zinc-300 leading-relaxed">Polygon-based segmentation for cars, vegetation, buildings, roads, motorcycles, traffic signs/lights and lanelines (solid/dashed). Delivered <strong class="text-white">5–80 classes per task</strong> in 50–60 minutes each.</p>
+            </div>
+            <!-- Lensor -->
+            <div class="project-card bg-zinc-900 border border-zinc-700/60 rounded-2xl p-8">
+                <div class="flex flex-wrap justify-between items-start gap-4 mb-5">
+                    <div>
+                        <h3 class="font-bold text-xl font-display">Lensor – Industrial Damage Assessment</h3>
+                        <p class="text-amber-400 text-sm mt-1">Truck &amp; Container Inspection · 2025–2026</p>
+                    </div>
+                    <span class="px-4 py-1.5 bg-amber-400/10 text-amber-400 text-xs font-semibold rounded-2xl">High-precision visual QA</span>
+                </div>
+                <p class="text-zinc-300 leading-relaxed">Identified scratches, dents, rust, and structural issues on industrial trucks and containers using detailed annotation and <strong class="text-white">blueprint overlays</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════ PROJECTS / GALLERY ═════════════════════ -->
+    <section id="projects" class="bg-zinc-900 py-20">
+        <div class="max-w-6xl mx-auto px-6 fade-in">
+            <h2 class="section-header text-4xl font-extrabold mb-4 font-display">Work Samples</h2>
+            <p class="text-zinc-400 mt-6 mb-2">Live annotation project screenshots from CVAT, Fast Label, SuperbAI/Next Vision and Lensor.</p>
+            <p class="upload-note mb-10">📸 To show your real screenshots: upload the image files to your GitHub repo and replace the illustrations below with <code>&lt;img src="filename.png"&gt;</code></p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+
+                <!-- ── CVAT card ── -->
+                <div class="project-card bg-zinc-800 border border-zinc-700/60 rounded-2xl overflow-hidden">
+                    <div class="overflow-hidden bg-zinc-950">
+                        <!-- CVAT illustration: aerial powerline polygon annotation -->
+                        <svg class="anno-img" viewBox="0 0 600 256" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="600" height="256" fill="#0d1117"/>
+                            <!-- Sky/aerial BG -->
+                            <rect width="600" height="256" fill="#0f2027"/>
+                            <!-- Ground texture -->
+                            <rect y="160" width="600" height="96" fill="#14532d" opacity="0.4"/>
+                            <!-- Clouds -->
+                            <ellipse cx="120" cy="50" rx="80" ry="25" fill="rgba(255,255,255,0.04)"/>
+                            <ellipse cx="450" cy="40" rx="100" ry="20" fill="rgba(255,255,255,0.03)"/>
+                            <!-- Power lines -->
+                            <line x1="0" y1="90" x2="600" y2="95" stroke="#94a3b8" stroke-width="1.5"/>
+                            <line x1="0" y1="110" x2="600" y2="115" stroke="#94a3b8" stroke-width="1.5"/>
+                            <!-- Poles -->
+                            <rect x="148" y="70" width="6" height="140" fill="#78716c"/>
+                            <rect x="148" y="82" width="40" height="5" fill="#78716c"/>
+                            <rect x="338" y="68" width="6" height="140" fill="#78716c"/>
+                            <rect x="338" y="80" width="40" height="5" fill="#78716c"/>
+                            <rect x="528" y="72" width="6" height="140" fill="#78716c"/>
+                            <rect x="528" y="84" width="40" height="5" fill="#78716c"/>
+                            <!-- Vegetation polygon annotation (green) -->
+                            <polygon points="60,200 40,240 120,245 180,220 160,195 100,190" fill="rgba(34,197,94,0.2)" stroke="#22c55e" stroke-width="1.5"/>
+                            <polygon points="250,195 230,238 320,244 370,215 350,192 290,188" fill="rgba(34,197,94,0.2)" stroke="#22c55e" stroke-width="1.5"/>
+                            <polygon points="430,198 410,242 500,248 550,218 530,196 470,190" fill="rgba(34,197,94,0.2)" stroke="#22c55e" stroke-width="1.5"/>
+                            <!-- Top rot annotation (red) on pole -->
+                            <polygon points="144,68 144,95 160,95 162,68" fill="rgba(239,68,68,0.25)" stroke="#ef4444" stroke-width="1.5"/>
+                            <!-- Cross arm annotation (blue) -->
+                            <rect x="146" y="79" width="44" height="8" fill="rgba(59,130,246,0.25)" stroke="#3b82f6" stroke-width="1.5"/>
+                            <!-- Annotation vertex dots -->
+                            <circle cx="60" cy="200" r="3" fill="#22c55e"/>
+                            <circle cx="40" cy="240" r="3" fill="#22c55e"/>
+                            <circle cx="120" cy="245" r="3" fill="#22c55e"/>
+                            <circle cx="180" cy="220" r="3" fill="#22c55e"/>
+                            <circle cx="160" cy="195" r="3" fill="#22c55e"/>
+                            <!-- CVAT toolbar mockup top -->
+                            <rect width="600" height="28" fill="#161b22"/>
+                            <rect x="8" y="8" width="50" height="13" rx="3" fill="#21262d"/>
+                            <rect x="66" y="8" width="50" height="13" rx="3" fill="#21262d"/>
+                            <rect x="124" y="8" width="50" height="13" rx="3" fill="#21262d"/>
+                            <circle cx="570" cy="14" r="5" fill="#22c55e"/>
+                            <text x="16" y="19" font-family="monospace" font-size="8" fill="#8b949e">File</text>
+                            <text x="74" y="19" font-family="monospace" font-size="8" fill="#8b949e">Annotation</text>
+                            <text x="132" y="19" font-family="monospace" font-size="8" fill="#8b949e">View</text>
+                            <!-- Label legend -->
+                            <rect x="420" y="38" width="170" height="75" rx="6" fill="rgba(0,0,0,0.7)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                            <text x="430" y="52" font-family="monospace" font-size="9" fill="#e2e8f0" font-weight="bold">Labels</text>
+                            <rect x="430" y="57" width="10" height="10" rx="2" fill="rgba(34,197,94,0.8)"/>
+                            <text x="444" y="66" font-family="monospace" font-size="8" fill="#94a3b8">Vegetation</text>
+                            <rect x="430" y="72" width="10" height="10" rx="2" fill="rgba(239,68,68,0.8)"/>
+                            <text x="444" y="81" font-family="monospace" font-size="8" fill="#94a3b8">Top Rot</text>
+                            <rect x="430" y="87" width="10" height="10" rx="2" fill="rgba(59,130,246,0.8)"/>
+                            <text x="444" y="96" font-family="monospace" font-size="8" fill="#94a3b8">Cross Arms</text>
+                            <text x="430" y="108" font-family="monospace" font-size="8" fill="#22c55e">✓ 90% accuracy</text>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                            <h4 class="font-bold font-display">CVAT – Vegetation &amp; Infrastructure Labelling</h4>
+                        </div>
+                        <p class="text-sm text-zinc-400">Polygon annotation on aerial power line dataset. Classes: Vegetation, Top Rot, Cross Arms, Equipment Damage.</p>
+                    </div>
+                </div>
+
+                <!-- ── Fast Label card ── -->
+                <div class="project-card bg-zinc-800 border border-zinc-700/60 rounded-2xl overflow-hidden">
+                    <div class="overflow-hidden bg-zinc-950">
+                        <!-- Fast Label illustration: urban scene segmentation -->
+                        <svg class="anno-img" viewBox="0 0 600 256" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="600" height="256" fill="#1a1a2e"/>
+                            <!-- Sky -->
+                            <rect width="600" height="120" fill="#16213e"/>
+                            <!-- Road -->
+                            <rect y="170" width="600" height="86" fill="#374151"/>
+                            <!-- Lane lines -->
+                            <rect x="290" y="180" width="20" height="40" fill="#fbbf24" opacity="0.6"/>
+                            <rect x="290" y="225" width="20" height="20" fill="#fbbf24" opacity="0.6"/>
+                            <!-- Buildings background -->
+                            <rect x="0" y="40" width="120" height="150" fill="#1f2937"/>
+                            <rect x="130" y="60" width="100" height="130" fill="#111827"/>
+                            <rect x="370" y="30" width="140" height="160" fill="#1f2937"/>
+                            <rect x="520" y="50" width="80" height="140" fill="#111827"/>
+                            <!-- Segmentation overlays -->
+                            <!-- Buildings (blue) -->
+                            <rect x="0" y="40" width="120" height="150" fill="rgba(59,130,246,0.2)" stroke="#3b82f6" stroke-width="1.5"/>
+                            <rect x="130" y="60" width="100" height="130" fill="rgba(59,130,246,0.2)" stroke="#3b82f6" stroke-width="1.5"/>
+                            <rect x="370" y="30" width="140" height="160" fill="rgba(59,130,246,0.2)" stroke="#3b82f6" stroke-width="1.5"/>
+                            <!-- Road (gray) -->
+                            <rect x="0" y="170" width="600" height="86" fill="rgba(107,114,128,0.3)" stroke="#6b7280" stroke-width="1.5"/>
+                            <!-- Car bounding boxes (yellow) -->
+                            <rect x="220" y="155" width="80" height="55" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1.5"/>
+                            <rect x="380" y="158" width="70" height="52" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1.5"/>
+                            <rect x="80" y="160" width="65" height="48" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1.5"/>
+                            <!-- Pedestrian (red) -->
+                            <rect x="315" y="150" width="25" height="60" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1.5"/>
+                            <!-- Traffic light -->
+                            <rect x="260" y="90" width="16" height="45" fill="#374151"/>
+                            <circle cx="268" cy="98" r="4" fill="#ef4444"/>
+                            <circle cx="268" cy="110" r="4" fill="#fbbf24"/>
+                            <circle cx="268" cy="122" r="4" fill="#22c55e"/>
+                            <rect x="258" y="87" width="20" height="43" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1"/>
+                            <!-- Lane line annotation (cyan) -->
+                            <line x1="250" y1="256" x2="295" y2="170" stroke="#06b6d4" stroke-width="2" stroke-dasharray="5,3"/>
+                            <line x1="350" y1="256" x2="310" y2="170" stroke="#06b6d4" stroke-width="2" stroke-dasharray="5,3"/>
+                            <!-- Toolbar -->
+                            <rect width="600" height="28" fill="#0f172a"/>
+                            <rect x="8" y="7" width="80" height="14" rx="3" fill="#1e293b"/>
+                            <text x="14" y="18" font-family="monospace" font-size="8" fill="#64748b">FastLabel v2.4</text>
+                            <circle cx="575" cy="14" r="5" fill="#3b82f6"/>
+                            <!-- Stats bar -->
+                            <rect x="0" y="228" width="600" height="28" fill="rgba(0,0,0,0.7)"/>
+                            <text x="10" y="246" font-family="monospace" font-size="8" fill="#94a3b8">Task 23/40  |  Classes: 7  |  Objects: 83  |  </text>
+                            <text x="290" y="246" font-family="monospace" font-size="8" fill="#22c55e">85% accuracy</text>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-2 h-2 rounded-full bg-pink-400"></span>
+                            <h4 class="font-bold font-display">Fast Label – Multi-Class Segmentation</h4>
+                        </div>
+                        <p class="text-sm text-zinc-400">Cars, trucks, pedestrians, lanelines, traffic signs &amp; buildings in urban scenes. Up to 83 annotations per image.</p>
+                    </div>
+                </div>
+
+                <!-- ── SuperbAI card ── -->
+                <div class="project-card bg-zinc-800 border border-zinc-700/60 rounded-2xl overflow-hidden">
+                    <div class="overflow-hidden bg-zinc-950">
+                        <!-- SuperbAI illustration: utility pole damage detection -->
+                        <svg class="anno-img" viewBox="0 0 600 256" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="600" height="256" fill="#0a0a0f"/>
+                            <!-- Sky gradient -->
+                            <rect width="600" height="180" fill="#0c1445" opacity="0.8"/>
+                            <!-- Field -->
+                            <rect y="180" width="600" height="76" fill="#14532d" opacity="0.4"/>
+                            <!-- Multiple poles -->
+                            <rect x="150" y="20" width="12" height="210" fill="#6b4a2a"/>
+                            <rect x="350" y="25" width="12" height="208" fill="#6b4a2a"/>
+                            <rect x="500" y="22" width="12" height="210" fill="#6b4a2a"/>
+                            <!-- Cross arms -->
+                            <rect x="130" y="55" width="52" height="8" fill="#6b4a2a"/>
+                            <rect x="330" y="60" width="52" height="8" fill="#6b4a2a"/>
+                            <!-- Wires -->
+                            <line x1="0" y1="65" x2="600" y2="70" stroke="#4b5563" stroke-width="1.5"/>
+                            <line x1="0" y1="80" x2="600" y2="85" stroke="#4b5563" stroke-width="1.5"/>
+                            <!-- Top Rot annotations (red) -->
+                            <rect x="146" y="18" width="20" height="45" fill="rgba(239,68,68,0.25)" stroke="#ef4444" stroke-width="2"/>
+                            <text x="170" y="38" font-family="monospace" font-size="8" fill="#ef4444">Top Rot</text>
+                            <rect x="346" y="22" width="20" height="40" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1.5"/>
+                            <!-- Wood Splintering annotation (orange) -->
+                            <rect x="146" y="100" width="20" height="35" fill="rgba(251,146,60,0.25)" stroke="#fb923c" stroke-width="2"/>
+                            <text x="170" y="118" font-family="monospace" font-size="8" fill="#fb923c">Splinter</text>
+                            <!-- Equipment on pole -->
+                            <rect x="155" y="145" width="30" height="25" rx="3" fill="#374151"/>
+                            <rect x="153" y="143" width="34" height="29" rx="3" fill="rgba(168,85,247,0.2)" stroke="#a855f7" stroke-width="1.5"/>
+                            <text x="165" y="162" font-family="monospace" font-size="8" fill="#a855f7">Eq.</text>
+                            <!-- SuperbAI header bar -->
+                            <rect width="600" height="28" fill="#0f0a2e"/>
+                            <text x="14" y="18" font-family="monospace" font-size="9" fill="#8b5cf6" font-weight="bold">SuperbAI</text>
+                            <text x="80" y="18" font-family="monospace" font-size="8" fill="#4b5563">Next Vision Project</text>
+                            <text x="450" y="18" font-family="monospace" font-size="8" fill="#22c55e">92% ✓</text>
+                            <!-- Annotation count -->
+                            <rect x="0" y="228" width="600" height="28" fill="rgba(0,0,0,0.8)"/>
+                            <text x="10" y="246" font-family="monospace" font-size="8" fill="#94a3b8">Image 738/738  |  Labels: Top Rot, Splinter, Equipment  |  </text>
+                            <text x="380" y="246" font-family="monospace" font-size="8" fill="#a855f7">3 days delivery</text>
+                            <!-- Progress bar -->
+                            <rect x="460" y="238" width="130" height="6" rx="3" fill="#1e293b"/>
+                            <rect x="460" y="238" width="120" height="6" rx="3" fill="#22c55e"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                            <h4 class="font-bold font-display">SuperbAI Next Vision – Pole Damage</h4>
+                        </div>
+                        <p class="text-sm text-zinc-400">Top rot, wood splintering &amp; equipment detection. 92% accuracy, 738 images completed in 3 days.</p>
+                    </div>
+                </div>
+
+                <!-- ── Lensor card ── -->
+                <div class="project-card bg-zinc-800 border border-zinc-700/60 rounded-2xl overflow-hidden">
+                    <div class="overflow-hidden bg-zinc-950">
+                        <!-- Lensor illustration: truck damage assessment -->
+                        <svg class="anno-img" viewBox="0 0 600 256" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="600" height="256" fill="#111"/>
+                            <!-- Floor/depot -->
+                            <rect y="190" width="600" height="66" fill="#1c1917"/>
+                            <line x1="0" y1="190" x2="600" y2="190" stroke="#292524" stroke-width="1"/>
+                            <!-- Truck body -->
+                            <rect x="60" y="80" width="440" height="120" rx="4" fill="#374151"/>
+                            <!-- Cab -->
+                            <rect x="60" y="95" width="100" height="105" rx="4" fill="#4b5563"/>
+                            <!-- Windshield -->
+                            <rect x="70" y="105" width="75" height="50" rx="3" fill="#1e3a5f" opacity="0.8"/>
+                            <!-- Wheels -->
+                            <circle cx="130" cy="210" r="22" fill="#1f2937" stroke="#374151" stroke-width="3"/>
+                            <circle cx="130" cy="210" r="10" fill="#374151"/>
+                            <circle cx="420" cy="210" r="22" fill="#1f2937" stroke="#374151" stroke-width="3"/>
+                            <circle cx="420" cy="210" r="10" fill="#374151"/>
+                            <circle cx="460" cy="210" r="22" fill="#1f2937" stroke="#374151" stroke-width="3"/>
+                            <circle cx="460" cy="210" r="10" fill="#374151"/>
+                            <!-- Scratch annotations (red) -->
+                            <rect x="200" y="95" width="80" height="30" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1.5"/>
+                            <text x="205" y="115" font-family="monospace" font-size="7" fill="#ef4444">Scratch #1</text>
+                            <!-- Dent annotation (orange) -->
+                            <rect x="320" y="120" width="60" height="45" fill="rgba(251,146,60,0.2)" stroke="#fb923c" stroke-width="1.5"/>
+                            <text x="325" y="145" font-family="monospace" font-size="7" fill="#fb923c">Dent</text>
+                            <!-- Rust annotation (amber) -->
+                            <rect x="410" y="90" width="70" height="40" fill="rgba(245,158,11,0.2)" stroke="#f59e0b" stroke-width="1.5"/>
+                            <text x="415" y="115" font-family="monospace" font-size="7" fill="#f59e0b">Rust spot</text>
+                            <!-- Blueprint grid overlay (subtle) -->
+                            <line x1="60" y1="80" x2="500" y2="80" stroke="rgba(59,130,246,0.15)" stroke-width="1" stroke-dasharray="8,4"/>
+                            <line x1="60" y1="120" x2="500" y2="120" stroke="rgba(59,130,246,0.1)" stroke-width="1" stroke-dasharray="8,4"/>
+                            <line x1="60" y1="160" x2="500" y2="160" stroke="rgba(59,130,246,0.1)" stroke-width="1" stroke-dasharray="8,4"/>
+                            <line x1="200" y1="80" x2="200" y2="200" stroke="rgba(59,130,246,0.1)" stroke-width="1" stroke-dasharray="8,4"/>
+                            <line x1="320" y1="80" x2="320" y2="200" stroke="rgba(59,130,246,0.1)" stroke-width="1" stroke-dasharray="8,4"/>
+                            <line x1="440" y1="80" x2="440" y2="200" stroke="rgba(59,130,246,0.1)" stroke-width="1" stroke-dasharray="8,4"/>
+                            <!-- Lensor header -->
+                            <rect width="600" height="28" fill="#0c0a09"/>
+                            <text x="14" y="18" font-family="monospace" font-size="9" fill="#f59e0b" font-weight="bold">LENSOR</text>
+                            <text x="80" y="18" font-family="monospace" font-size="8" fill="#57534e">Industrial Inspection</text>
+                            <text x="450" y="18" font-family="monospace" font-size="8" fill="#fb923c">QA Mode Active</text>
+                            <!-- Bottom bar -->
+                            <rect x="0" y="228" width="600" height="28" fill="rgba(0,0,0,0.8)"/>
+                            <text x="10" y="246" font-family="monospace" font-size="8" fill="#94a3b8">Defects found: Scratch ×2  Dent ×1  Rust ×1  |  </text>
+                            <text x="340" y="246" font-family="monospace" font-size="8" fill="#f59e0b">High-precision visual QA</text>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                            <h4 class="font-bold font-display">Lensor – Industrial Truck Inspection</h4>
+                        </div>
+                        <p class="text-sm text-zinc-400">Scratch, rust &amp; structural damage detection on commercial vehicles and containers using blueprint overlays.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="text-xs text-center text-zinc-500 mt-10">
+                ✨ Illustrations above represent the type of annotation work performed. Upload your real screenshots to show actual project visuals.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════ EDUCATION ══════════════════════════════ -->
+    <section id="education" class="max-w-6xl mx-auto px-6 py-20 fade-in">
+        <h2 class="section-header text-4xl font-extrabold mb-14 font-display">Education</h2>
+        <div class="bg-zinc-900 border border-zinc-700/60 rounded-2xl p-10 max-w-2xl">
+            <div class="flex justify-between items-start gap-4">
+                <div>
+                    <h4 class="font-bold text-2xl font-display">Bachelor of Science in Chemistry</h4>
+                    <p class="text-blue-400 mt-1">Moi University · 2021 – 2026</p>
+                </div>
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-600/30 to-blue-600/30 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-graduation-cap text-2xl text-purple-400"></i>
+                </div>
+            </div>
+            <p class="text-zinc-400 mt-6 leading-relaxed">Strong foundation in industrial chemical processes, pesticide formulations, and waste management systems – directly supporting data annotation work in industrial &amp; technical domains.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════ CONTACT ════════════════════════════════ -->
+    <section id="contact" class="bg-zinc-900 py-20">
+        <div class="max-w-6xl mx-auto px-6 fade-in">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-extrabold mb-4 font-display leading-tight">Ready to power your AI with precise data?</h2>
+                    <p class="text-zinc-400 text-lg leading-relaxed">Whether you need expert annotation, prompt engineering, or chemistry-informed technical labelling — I'm one message away.</p>
+                    
+                    <div class="mt-10 space-y-7">
+                        <a href="mailto:jeromedewane294@gmail.com" class="flex gap-5 items-center group">
+                            <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/20 transition-colors">
+                                <i class="fas fa-envelope text-lg text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-sm text-zinc-400">Email</p>
+                                <span class="text-zinc-200 group-hover:text-blue-400 transition-colors">jeromedewane294@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="https://x.com/timebombjnr" target="_blank" rel="noopener" class="flex gap-5 items-center group">
+                            <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/20 transition-colors">
+                                <i class="fab fa-x-twitter text-lg text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-sm text-zinc-400">X / Twitter</p>
+                                <span class="text-zinc-200 group-hover:text-blue-400 transition-colors">@timebombjnr</span>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/254799558478" target="_blank" rel="noopener" class="flex gap-5 items-center group">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-500/20 transition-colors">
+                                <i class="fab fa-whatsapp text-lg text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-sm text-zinc-400">WhatsApp</p>
+                                <span class="text-zinc-200 group-hover:text-emerald-400 transition-colors">+254 799 558 478</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-zinc-800/60 border border-zinc-700/60 rounded-2xl p-10 text-center">
+                    <div class="w-16 h-16 bg-emerald-500/15 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-check-circle text-3xl text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 font-display">Let's make your AI smarter</h3>
+                    <p class="text-zinc-400 mb-8 leading-relaxed">Drop me a message and I'll reply within 24 hours. Open to freelance annotation gigs, full-time roles, or collaborations.</p>
+                    <a href="mailto:jeromedewane294@gmail.com" class="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 rounded-2xl font-semibold text-lg transition-all hover:scale-105 shadow-xl">
+                        <i class="fas fa-envelope"></i> Send me an email now
+                    </a>
+                    <p class="text-zinc-500 text-xs mt-6">Usually responds within 24 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════ FOOTER ════════════════════════════════ -->
+    <footer class="bg-black py-10 text-center text-zinc-500 text-sm">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex justify-center gap-6 mb-6">
+                <a href="mailto:jeromedewane294@gmail.com" class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center hover:bg-zinc-800 transition-colors" aria-label="Email">
+                    <i class="fas fa-envelope text-zinc-400"></i>
+                </a>
+                <a href="https://x.com/timebombjnr" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center hover:bg-zinc-800 transition-colors" aria-label="X/Twitter">
+                    <i class="fab fa-x-twitter text-zinc-400"></i>
+                </a>
+                <a href="https://wa.me/254799558478" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center hover:bg-zinc-800 transition-colors" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp text-zinc-400"></i>
+                </a>
+            </div>
+            <p>© 2026 Jerome Dewane · Data Annotation Specialist · Kenya 🇰🇪</p>
+            <p class="mt-2 text-zinc-600">Deploy to GitHub Pages — single file, no dependencies</p>
+        </div>
+    </footer>
+
+    <script>
+        // ── Mobile menu ──
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+        function closeMobile() { mobileMenu.classList.remove('open'); }
+
+        // ── Scroll fade-in ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(el => {
+                if (el.isIntersecting) {
+                    el.target.classList.add('visible');
+                    observer.unobserve(el.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // ── Active nav highlight ──
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.style.color = link.getAttribute('href') === '#' + current ? '#3b82f6' : '';
+            });
+        });
+
+        console.log('%c✅ Jerome Dewane – Portfolio loaded. All images are self-contained SVGs.', 'color:#a855f7; font-weight:700; font-size:13px');
+        console.log('%c📸 To add your real profile photo: replace the <svg> block in the Hero section with <img src="profile.jpg" ...>', 'color:#f59e0b; font-size:11px');
+    </script>
+</body>
+</html>
